@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'docker pull woorank/docker-node-babel:latest'
+            image 'woorank/docker-node-babel:latest'
             args '-p 3000:3000'
         }
     }
