@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'woorank/docker-node-babel:latest'
+            image 'node:6-alpine'
             args '-p 3000:3000'
         }
     }
@@ -12,6 +12,8 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'npm install'
+                sh 'npm install babel-core'
+                sh 'npm install babel-cli'
             }
         }
         stage('Test') { 
