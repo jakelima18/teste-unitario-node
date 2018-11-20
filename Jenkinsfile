@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'node:6-alpine'
+            image 'node'
             args '-p 3000:3000'
         }
     }
@@ -12,8 +12,6 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'npm install'
-                sh 'npm install babel-core'
-                sh 'npm install babel-cli'
             }
         }
         stage('Test') { 
