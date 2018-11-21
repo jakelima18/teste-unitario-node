@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'nodesource/trusty:5.1' } }
+    agent { docker { image 'node6-alpine' } }
     environment {
         HOME = "."
     }
@@ -13,17 +13,16 @@ pipeline {
             steps {
                 sh 'npm test'
             }
-        }
-  post {
+        
+post {
     always {
         emailext (
-        subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-        body: """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
-        <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
-        recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+            subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+            body: """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+              <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
+            recipientProviders: [[$class: 'DevelopersRecipientProvider']]
           )
-
-        }
-    }    
+    }
+}        }
     }
 }
