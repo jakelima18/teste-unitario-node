@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'node:6-alpine' } }
+    agent { docker { image 'nodesource/trusty:5.1' } }
     environment {
         HOME = "."
     }
