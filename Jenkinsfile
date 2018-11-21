@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('pre-build'){
             steps {
-              sh 'npm cache clean'
+              sh 'npm cache clear'
             }
         }
         stage('build') {
